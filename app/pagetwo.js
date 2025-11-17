@@ -78,7 +78,7 @@ export default function App() {
     <View style={styles.container}>
       
             
-      <Text style={styles.title}>Verificar se Roda</Text>
+      <Text style={styles.title}>Verificar compatibilidade</Text>
 
       <TextInput
         style={styles.input}

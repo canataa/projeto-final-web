@@ -26,14 +26,12 @@ export default function Inicio() {
       {/* Caixa de texto principal */}
       <View style={styles.content}>
         <View style={styles.caixa}>
-          <Text style={styles.titulo}>O que é Hardware</Text>
+          <Text style={styles.titulo}>Bem vindo</Text>
           <Text style={[styles.textocaixa]} >
-            
-           "Hardware é a parte física do computador, ou seja, tudo o que você pode tocar.
-Inclui componentes como o monitor, teclado, mouse, processador, memória e placa-mãe.
-Essas peças trabalham juntas para que o computador funcione e execute os programas (que são o software).
-Em resumo, o hardware é o corpo do computador, enquanto o software é o cérebro que o faz agir."
-            </Text>
+            Este aplicativo fala sobre Hardware e seus componentes, o que é hardware?</Text>
+            <Text style={[styles.textocaixa]} >
+            Hardware é a parte física do computador, ou seja, tudo aquilo que você pode tocar. São as peças 
+            como o monitor, o teclado, o mouse, o processador, a memória e a placa-mãe, igual esses exemplos abaixo.</Text>
           
         </View>
       </View>
@@ -48,7 +46,7 @@ Em resumo, o hardware é o corpo do computador, enquanto o software é o cérebr
  style={styles.imagem}
 />
 
-          <Text style={styles.input}>Placa De Vídeo NVIDIA Asus Strix RTX 4080</Text>
+          <Text style={styles.input}>Placa De Vídeo </Text>
         </Animated.View>
       </Pressable>
 
@@ -61,7 +59,7 @@ Em resumo, o hardware é o corpo do computador, enquanto o software é o cérebr
          <Image source={require("../assets/placa_mae.png")} 
  style={styles.imagem}
 />
-          <Text style={styles.input2}>Placa Mãe Gigabyte B550M AORUS Elite</Text>
+          <Text style={styles.input2}>Placa Mãe </Text>
         </Animated.View>
       </Pressable>
 
@@ -75,7 +73,7 @@ Em resumo, o hardware é o corpo do computador, enquanto o software é o cérebr
             source={{ uri: "https://cdn.awsli.com.br/2500x2500/2508/2508057/produto/205993563/1-lvjtrr.jpg" }}
             style={styles.imagem}
           />
-          <Text style={styles.input3}>Processador AMD ZEN 4 Ryzen 9 7950X</Text>
+          <Text style={styles.input3}>Processador </Text>
         </Animated.View>
       </Pressable>
 
@@ -89,7 +87,7 @@ Em resumo, o hardware é o corpo do computador, enquanto o software é o cérebr
             source={{ uri: "https://img.olx.com.br/images/37/374598577163702.jpg" }}
             style={styles.imagem}
           />
-          <Text style={styles.input4}>Mouse Gamer Fade RGB</Text>
+          <Text style={styles.input4}>Mouse</Text>
         </Animated.View>
       </Pressable>
     </View>
@@ -101,157 +99,223 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "rgb(11, 5, 58)",
   },
+
   header: {
-    height: 70,
+    height: 90,
     backgroundColor: "rgb(0, 0, 0)",
     justifyContent: "center",
     alignItems: "center",
-    elevation: 4,
+    elevation: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: "rgba(0, 130, 252, 0.4)",
   },
+
   headerText: {
-    color: "rgb(255, 255, 255)",
-    fontSize: 35,
+    color: "white",
+    fontSize: 40,
     fontWeight: "bold",
+    letterSpacing: 2,
+    textShadowColor: "rgba(0, 130, 252, 0.7)",
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 8,
   },
+
   content: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
+
+  caixa: {
+    position: "absolute",
+    width: 550,
+    minHeight: 260,
+    backgroundColor: "rgb(23, 14, 92)",
+    borderRadius: 25,
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "center",
+
+    // NOVO ESTILO
+    borderWidth: 2,
+    borderColor: "rgba(0, 130, 252, 0.35)",
+    shadowColor: "rgb(0, 130, 252)",
+    shadowOpacity: 0.8,
+    shadowOffset: { width: 5, height: 7 },
+    shadowRadius: 18,
+    elevation: 15,
+    marginTop: -550,
+  },
+
+  titulo: {
+    fontSize: 26,
+    fontWeight: "bold",
+    fontFamily: "monospace",
+    color: "white",
+    marginBottom: 15,
+
+    // brilho leve
+    textShadowColor: "rgba(0, 130, 252, 0.6)",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 6,
+  },
+
   textocaixa: {
     fontSize: 16,
     fontFamily: "monospace",
     color: "white",
     textAlign: "center",
-    flexWrap: "wrap",
     width: "90%",
-  },
-  caixa: {
-    position: "absolute",
-    width: 550,
-    height: 250,
-    backgroundColor: "rgb(23, 14, 92)",
-    borderRadius: 20,
-    padding: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "rgb(0, 130, 252)",
-    shadowOpacity: 0.8,
-    shadowOffset: { width: 8, height: 10 },
-    shadowRadius: 20,
-    elevation: 12,
-    marginTop: -600,
-  },
-  titulo: {
-    fontSize: 24,
-    fontWeight: "bold",
-    fontFamily: "monospace",
-    color: "white",
-    textAlign: "center",
     marginBottom: 10,
+    lineHeight: 22,
   },
+
   hard: {
-    width: 230,
+    width: 240,
     height: 270,
     backgroundColor: "rgb(23, 14, 92)",
-    borderRadius: 20,
-    padding: 10,
-    left: 30,
+    borderRadius: 22,
+    padding: 12,
+    left: 20,
     alignItems: "center",
+   
+
+    // melhoria visual
+    borderWidth: 2,
+    borderColor: "rgba(0, 130, 252, 0.35)",
     shadowColor: "rgb(0, 130, 252)",
     shadowOpacity: 0.8,
-    shadowOffset: { width: 8, height: 10 },
+    shadowOffset: { width: 5, height: 7 },
     shadowRadius: 20,
-    elevation: 12,
-    marginTop: -600,
+    elevation: 15,
+
+    marginTop: -580,
+    overflow: "hidden",
   },
+
+  hard2: {
+    width: 240,
+    height: 270,
+    backgroundColor: "rgb(23, 14, 92)",
+    borderRadius: 22,
+    padding: 12,
+    left: 330,
+    alignItems: "center",
+
+    borderWidth: 2,
+    borderColor: "rgba(0, 130, 252, 0.35)",
+    shadowColor: "rgb(0, 130, 252)",
+    shadowOpacity: 0.8,
+    shadowOffset: { width: 5, height: 7 },
+    shadowRadius: 20,
+    elevation: 15,
+
+    marginTop: -580,
+    overflow: "hidden",
+  },
+
+  hard3: {
+    width: 240,
+    height: 270,
+    backgroundColor: "rgb(23, 14, 92)",
+    borderRadius: 22,
+    padding: 12,
+    left: 20,
+    alignItems: "center",
+
+    borderWidth: 2,
+    borderColor: "rgba(0, 130, 252, 0.35)",
+    shadowColor: "rgb(0, 130, 252)",
+    shadowOpacity: 0.8,
+    shadowOffset: { width: 5, height: 7 },
+    shadowRadius: 20,
+    elevation: 15,
+
+    marginTop: -290,
+    overflow: "hidden",
+  },
+
+  hard4: {
+    width: 240,
+    height: 270,
+    backgroundColor: "rgb(23, 14, 92)",
+    borderRadius: 22,
+    padding: 12,
+    left: 330,
+    alignItems: "center",
+
+    borderWidth: 2,
+    borderColor: "rgba(0, 130, 252, 0.35)",
+    shadowColor: "rgb(0, 130, 252)",
+    shadowOpacity: 0.8,
+    shadowOffset: { width: 5, height: 7 },
+    shadowRadius: 20,
+    elevation: 15,
+
+    marginTop: -290,
+    overflow: "hidden",
+  },
+
   imagem: {
     width: 200,
     height: 200,
-    borderRadius: 10,
+    borderRadius: 12,
     marginBottom: 10,
+
+    // efeito de brilho
+    shadowColor: "rgba(0, 130, 252, 0.9)",
+    shadowOpacity: 0.8,
+    shadowRadius: 20,
   },
+
   input: {
     width: "90%",
-    height: 40,
-    backgroundColor: "rgba(0, 132, 255, 0.1)",
+    height: 32,
+    backgroundColor: "rgba(0, 132, 255, 0.15)",
     borderRadius: 10,
     textAlign: "center",
     color: "white",
     fontFamily: "monospace",
+    fontSize: 14,
+    paddingTop: 6,
   },
-  hard2: {
-    width: 230,
-    height: 270,
-    backgroundColor: "rgb(23, 14, 92)",
-    borderRadius: 20,
-    padding: 10,
-    left: 343,
-    alignItems: "center",
-    shadowColor: "rgb(0, 130, 252)",
-    shadowOpacity: 0.8,
-    shadowOffset: { width: 8, height: 10 },
-    shadowRadius: 20,
-    elevation: 12,
-    marginTop: -600,
-  },
+
   input2: {
     width: "90%",
-    height: 40,
-    backgroundColor: "rgba(0, 132, 255, 0.1)",
+    height: 32,
+    backgroundColor: "rgba(0, 132, 255, 0.15)",
     borderRadius: 10,
     textAlign: "center",
     color: "white",
     fontFamily: "monospace",
+    fontSize: 14,
+    paddingTop: 6,
   },
-  hard3: {
-    width: 230,
-    height: 270,
-    backgroundColor: "rgb(23, 14, 92)",
-    borderRadius: 20,
-    padding: 10,
-    left: 30,
-    alignItems: "center",
-    shadowColor: "rgb(0, 130, 252)",
-    shadowOpacity: 0.8,
-    shadowOffset: { width: 8, height: 10 },
-    shadowRadius: 20,
-    elevation: 12,
-    marginTop: -300,
-  },
+
   input3: {
     width: "90%",
-    height: 40,
-    backgroundColor: "rgba(0, 132, 255, 0.1)",
+    height: 32,
+    backgroundColor: "rgba(0, 132, 255, 0.15)",
     borderRadius: 10,
     textAlign: "center",
     color: "white",
     fontFamily: "monospace",
+    fontSize: 14,
+    paddingTop: 6,
   },
-  hard4: {
-    width: 230,
-    height: 270,
-    backgroundColor: "rgb(23, 14, 92)",
-    borderRadius: 20,
-    padding: 10,
-    left: 343,
-    alignItems: "center",
-    shadowColor: "rgb(0, 130, 252)",
-    shadowOpacity: 0.8,
-    shadowOffset: { width: 8, height: 10 },
-    shadowRadius: 20,
-    elevation: 12,
-    marginTop: -300,
-  },
+
   input4: {
     width: "90%",
-    height: 40,
-    backgroundColor: "rgba(0, 132, 255, 0.1)",
+    height: 32,
+    backgroundColor: "rgba(0, 132, 255, 0.15)",
     borderRadius: 10,
     textAlign: "center",
     color: "white",
     fontFamily: "monospace",
+    fontSize: 14,
+    paddingTop: 6,
   },
 });
+
 
 
