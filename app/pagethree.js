@@ -3,6 +3,12 @@ import { withLayoutContext } from "expo-router";
 import React from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 
+
+import { withLayoutContext } from "expo-router";
+import React from "react";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
+
+
 export default function SobreMim() {
   return (
     <View style={styles.container}>
@@ -63,6 +69,7 @@ const styles = StyleSheet.create({
 
   scroll: {
     padding: 20,
+
   },
 
   card: {
@@ -89,4 +96,31 @@ const styles = StyleSheet.create({
     color: "#1A73E8",
     fontWeight: "bold",
   },
+  card: {
+    backgroundColor: "#EFEFEF",
+    borderRadius: 12,
+    padding: 20,
+  },
+
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginTop: 10,
+    marginBottom: 5,
+    color: "#0A0A2A",
+  },
+
+  text: {
+    fontSize: 15,
+    marginBottom: 10,
+    color: "#1A1A1A",
+  },
+
+  highlight: {
+    color: "#1A73E8",
+    fontWeight: "bold",
+  },
 });
+
+
+

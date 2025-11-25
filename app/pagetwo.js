@@ -11,7 +11,6 @@ import {
   ScrollView,
   Dimensions,
   Pressable,
-  Platform,
 } from "react-native";
 
 /* ----------------------------
@@ -203,15 +202,13 @@ export default function App() {
   const [resultado, setResultado] = useState("");
   const [detalhes, setDetalhes] = useState(null);
 
-  // Modal state (opção B): quando o usuário toca no campo, abre modal
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalType, setModalType] = useState(null); // 'gpu'|'cpu'|'ram'|'jogo'
+  const [modalType, setModalType] = useState(null);
   const [searchText, setSearchText] = useState("");
 
-  // listas para modal
   const gpuList = Object.keys(gpuNivel);
   const cpuList = Object.keys(cpuNivel);
-  const ramList = Object.keys(ramNivel).map((r) => r.toString()); // strings
+  const ramList = Object.keys(ramNivel).map((r) => r.toString());
   const jogoList = Object.keys(jogosRequisitos);
 
   function openModal(type) {
@@ -231,10 +228,12 @@ export default function App() {
   function filterList() {
     const q = searchText.toLowerCase().trim();
     let base = [];
+
     if (modalType === "gpu") base = gpuList;
     if (modalType === "cpu") base = cpuList;
     if (modalType === "ram") base = ramList;
     if (modalType === "jogo") base = jogoList;
+
     if (!q) return base;
     return base.filter((x) => x.toLowerCase().includes(q));
   }
@@ -247,47 +246,34 @@ export default function App() {
       return;
     }
 
-    // GPU: aceitar exata key (maiusculas importa) - tentamos match case-insensitive
-    let gpuKey = Object.keys(gpuNivel).find((k) => k.toLowerCase() === gpu.toLowerCase().trim());
-    if (!gpuKey) {
-      setResultado("Placa de vídeo não encontrada.");
-      setDetalhes(null);
-      return;
-    }
+    const gpuKey = Object.keys(gpuNivel).find(
+      (k) => k.toLowerCase() === gpu.toLowerCase().trim()
+    );
+    if (!gpuKey) return setResultado("Placa de vídeo não encontrada.");
 
-    let cpuKey = Object.keys(cpuNivel).find((k) => k.toLowerCase() === cpu.toLowerCase().trim());
-    if (!cpuKey) {
-      setResultado("Processador não encontrado.");
-      setDetalhes(null);
-      return;
-    }
+    const cpuKey = Object.keys(cpuNivel).find(
+      (k) => k.toLowerCase() === cpu.toLowerCase().trim()
+    );
+    if (!cpuKey) return setResultado("Processador não encontrado.");
 
     const ramInt = parseInt(ram);
-    if (isNaN(ramInt) || !ramNivel[String(ramInt)]) {
-      setResultado("Quantidade de RAM inválida.");
-      setDetalhes(null);
-      return;
-    }
+    if (!ramNivel[String(ramInt)])
+      return setResultado("Quantidade de RAM inválida.");
 
-    // niveis
     const nivelGpu = gpuNivel[gpuKey];
     const nivelCpu = cpuNivel[cpuKey];
     const nivelRam = ramNivel[String(ramInt)];
     const nivelJogo = jogosRequisitos[jogoLower];
-
-    // requisito de RAM recomendado
     const reqRam = requiredRamForGame(nivelJogo);
 
-    // estimativa de fps
     const fps = estimateFPS(nivelGpu, nivelCpu, nivelJogo);
     const preset = recommendPreset(fps);
 
-    // decisão de compatibilidade: precisa gpu>=nivelJogo && cpu>=nivelJogo*0.8 && ram>= reqRam
     const cpuOk = nivelCpu >= Math.round(nivelJogo * 0.8);
     const gpuOk = nivelGpu >= nivelJogo;
     const ramOk = nivelRam >= reqRam;
 
-    const roda = gpuOk && cpuOk && ramOk;
+    const roda = cpuOk && gpuOk && ramOk;
 
     setResultado(roda ? "RODA ✓" : "NÃO RODA ✗");
 
@@ -307,17 +293,12 @@ export default function App() {
     });
   }
 
-  // UI helpers
-  const windowW = Dimensions.get("window").width;
-
   return (
     <SafeAreaView style={styles.safe}>
-      {/* HEADER FIXO */}
       <View style={styles.header}>
         <Text style={styles.headerText}>Livre</Text>
       </View>
 
-      {/* TODO O RESTO FICA DENTRO DO SCROLLVIEW */}
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         <View style={styles.container}>
           <Text style={styles.title}>Verificar compatibilidade</Text>
@@ -356,13 +337,14 @@ export default function App() {
             {detalhes && (
               <View style={styles.detalhes}>
                 <Text style={styles.detailLine}>
-                  GPU: {detalhes.gpuKey}  — {detalhes.gpuOk ? "OK" : "Insuficiente"}
+                  GPU: {detalhes.gpuKey} — {detalhes.gpuOk ? "OK" : "Insuficiente"}
                 </Text>
                 <Text style={styles.detailLine}>
-                  CPU: {detalhes.cpuKey}  — {detalhes.cpuOk ? "OK" : "Insuficiente"}
+                  CPU: {detalhes.cpuKey} — {detalhes.cpuOk ? "OK" : "Insuficiente"}
                 </Text>
                 <Text style={styles.detailLine}>
-                  RAM: {detalhes.nivelRam} GB — requisitado: {detalhes.reqRam} GB — {detalhes.ramOk ? "OK" : "Insuficiente"}
+                  RAM: {detalhes.nivelRam} GB — requisitado: {detalhes.reqRam} GB —{" "}
+                  {detalhes.ramOk ? "OK" : "Insuficiente"}
                 </Text>
 
                 <View style={{ marginTop: 10 }}>
@@ -374,7 +356,6 @@ export default function App() {
                 <View style={{ marginTop: 12 }}>
                   <Text style={styles.subTitle}>Visual (níveis comparativos)</Text>
 
-                  {/* GPU BAR */}
                   <View style={styles.barRow}>
                     <Text style={styles.barLabel}>GPU</Text>
                     <View style={styles.barBg}>
@@ -392,7 +373,6 @@ export default function App() {
                     </View>
                   </View>
 
-                  {/* CPU BAR */}
                   <View style={styles.barRow}>
                     <Text style={styles.barLabel}>CPU</Text>
                     <View style={styles.barBg}>
@@ -410,16 +390,10 @@ export default function App() {
                     </View>
                   </View>
 
-                  {/* REQUISITO BAR */}
                   <View style={styles.barRow}>
                     <Text style={styles.barLabel}>Requisito</Text>
                     <View style={styles.barBg}>
-                      <View
-                        style={[
-                          styles.barFillReq,
-                          { width: "100%" },
-                        ]}
-                      />
+                      <View style={[styles.barFillReq, { width: "100%" }]} />
                     </View>
                   </View>
                 </View>
@@ -429,9 +403,7 @@ export default function App() {
         </View>
       </ScrollView>
 
-      {/* -----------------------------
-          MODAL
-         ----------------------------- */}
+      {/* MODAL */}
       <Modal visible={modalVisible} animationType="slide" transparent={false}>
         <SafeAreaView style={styles.modalSafe}>
           <View style={styles.modalHeader}>
@@ -455,8 +427,8 @@ export default function App() {
               value={searchText}
               onChangeText={setSearchText}
               style={styles.modalInput}
-              autoFocus
               placeholderTextColor="#aaa"
+              autoFocus
             />
           </View>
 
@@ -487,7 +459,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(23,14,92)",
   },
 
-  /* Header novo */
   header: {
     height: 90,
     width: "100%",
@@ -600,7 +571,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
 
-  /* Modal */
   modalSafe: {
     flex: 1,
     backgroundColor: "#0d0d10",
@@ -616,7 +586,6 @@ const styles = StyleSheet.create({
   modalClose: {
     color: "#0af",
     fontSize: 16,
-    paddingHorizontal: 8,
   },
   modalTitle: {
     color: "#fff",
@@ -643,3 +612,5 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
+
+
