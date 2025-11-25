@@ -467,150 +467,208 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomWidth: 2,
     borderBottomColor: "rgba(0, 130, 252, 0.4)",
+    elevation: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.6,
+    shadowOffset: { width: 0, height: 4 },
   },
+
   headerText: {
     color: "white",
-    fontSize: 32,
+    fontSize: 34,
     fontWeight: "bold",
+    letterSpacing: 1.5,
   },
 
   container: {
     flex: 1,
-    padding: 20,
+    padding: 24,
     alignItems: "center",
   },
 
   title: {
     color: "#fff",
-    fontSize: 24,
-    marginVertical: 10,
-    fontWeight: "700",
+    fontSize: 26,
+    marginBottom: 20,
+    fontWeight: "800",
+    textAlign: "center",
   },
 
   input: {
     width: "100%",
-    backgroundColor: "#3a3640",
-    padding: 12,
-    marginVertical: 8,
-    borderRadius: 8,
+    backgroundColor: "#2d2a33",
+    paddingVertical: 18,
+    paddingHorizontal: 14,
+    marginVertical: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 2 },
   },
+
   inputText: {
     color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
   },
+
   placeholderText: {
     color: "#bfbfc2",
+    fontSize: 16,
   },
 
   button: {
-    marginTop: 12,
+    marginTop: 20,
     backgroundColor: "#0af",
-    padding: 12,
-    borderRadius: 8,
-    width: "60%",
+    paddingVertical: 16,
+    borderRadius: 10,
+    width: "70%",
     alignItems: "center",
-    elevation: 3,
+    elevation: 6,
+    shadowColor: "#00aaff",
+    shadowOpacity: 0.6,
+    shadowOffset: { width: 0, height: 3 },
   },
+
   buttonText: {
     color: "#fff",
-    fontWeight: "700",
+    fontWeight: "800",
+    fontSize: 16,
+    letterSpacing: 1,
   },
 
   resultBox: {
     width: "100%",
-    marginTop: 18,
-    padding: 14,
-    borderRadius: 8,
-    backgroundColor: "rgba(0,0,0,0.15)",
+    marginTop: 25,
+    padding: 20,
+    borderRadius: 12,
+    backgroundColor: "rgba(0,0,0,0.25)",
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 3 },
   },
+
   result: {
     color: "white",
-    fontSize: 20,
-    fontWeight: "700",
+    fontSize: 22,
+    fontWeight: "900",
+    marginBottom: 14,
+    textAlign: "center",
   },
 
   detalhes: {
-    marginTop: 8,
+    marginTop: 10,
+    paddingHorizontal: 4,
   },
+
   detailLine: {
     color: "#e6e6e6",
     marginTop: 6,
+    fontSize: 15,
+    fontWeight: "500",
   },
 
   subTitle: {
     color: "#fff",
-    fontWeight: "700",
-    marginBottom: 6,
+    fontWeight: "800",
+    fontSize: 16,
+    marginBottom: 8,
+    marginTop: 12,
   },
 
   barRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 6,
+    marginVertical: 8,
   },
+
   barLabel: {
-    width: 70,
+    width: 80,
     color: "#fff",
-    fontSize: 12,
+    fontSize: 13,
+    fontWeight: "600",
   },
+
   barBg: {
     flex: 1,
-    height: 12,
-    backgroundColor: "#2b2b35",
-    borderRadius: 8,
+    height: 14,
+    backgroundColor: "#22222c",
+    borderRadius: 10,
     overflow: "hidden",
     marginLeft: 8,
   },
+
   barFill: {
     height: "100%",
     backgroundColor: "#0af",
-    borderRadius: 8,
+    borderRadius: 10,
   },
+
   barFillReq: {
     height: "100%",
     backgroundColor: "#ff7f50",
-    borderRadius: 8,
+    borderRadius: 10,
   },
 
   modalSafe: {
     flex: 1,
-    backgroundColor: "#0d0d10",
+    backgroundColor: "#0b0b13",
+    paddingTop: 10,
   },
+
   modalHeader: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: "#222",
+    borderBottomColor: "rgba(255,255,255,0.1)",
   },
+
   modalClose: {
     color: "#0af",
-    fontSize: 16,
+    fontSize: 17,
+    fontWeight: "800",
   },
+
   modalTitle: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "700",
   },
+
   modalSearch: {
     padding: 12,
     borderBottomWidth: 1,
-    borderBottomColor: "#222",
+    borderBottomColor: "rgba(255,255,255,0.1)",
   },
+
   modalInput: {
-    backgroundColor: "#222",
+    backgroundColor: "#1c1c22",
     color: "#fff",
-    borderRadius: 8,
-    padding: 10,
-  },
-  modalItem: {
+    borderRadius: 10,
     padding: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#111",
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
   },
+
+  modalItem: {
+    padding: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: "rgba(255,255,255,0.05)",
+  },
+
   modalItemText: {
     color: "#fff",
+    fontSize: 15,
+    fontWeight: "500",
   },
 });
-
-
