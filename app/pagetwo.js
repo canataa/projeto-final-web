@@ -275,7 +275,7 @@ export default function App() {
 
     const roda = cpuOk && gpuOk && ramOk;
 
-    setResultado(roda ? "RODA ✓" : "NÃO RODA ✗");
+    setResultado(roda ? "Compatível" : "Incompatível");
 
     setDetalhes({
       gpuKey,
@@ -347,10 +347,10 @@ export default function App() {
                   {detalhes.ramOk ? "OK" : "Insuficiente"}
                 </Text>
 
-                <View style={{ marginTop: 10 }}>
+                <View style={{ marginTop: 10  }}>
                   <Text style={styles.subTitle}>Estimativa</Text>
-                  <Text>FPS estimado: {detalhes.fps} FPS</Text>
-                  <Text>Preset recomendado: {detalhes.preset}</Text>
+                  <Text style={styles.fps}>FPS estimado: {detalhes.fps} FPS</Text>
+                  <Text style={styles.fps}>Preset recomendado: {detalhes.preset}</Text>
                 </View>
 
                 <View style={{ marginTop: 12 }}>
@@ -671,4 +671,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "500",
   },
+  fps: {
+    color: "#fff"
+  }
 });
